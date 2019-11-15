@@ -6,8 +6,7 @@ function watchForm() {
 }
 
 function getDogImage() {
-  let number = $("#number :selected").val();
-//  let num = number.toString();
+  let number = $("#number").val();
   fetch(`https://dog.ceo/api/breeds/image/random/${number}`)
     .then(response => response.json())
     .then(responseJson => 
@@ -17,11 +16,12 @@ function getDogImage() {
 
 function displayResults(responseJson) {
   console.log(responseJson);
-  //replace the existing image with the new one
-  $('.results-img').replaceWith(
-    `<img src="${responseJson.message}" class="results-img">`
-  )
-  //display the results section
+  $('.results-img').empty();
+  for (let i=0; i < responseJson.message.length; i++) {
+  $('.results-img').append(     
+    `<img src="${responseJson.message[i]}">`);
+    console.log(responseJson.message[i]);
+  }
   $('.results').removeClass('hidden');
 }
 
