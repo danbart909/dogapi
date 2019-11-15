@@ -19,7 +19,7 @@ function displayResults(responseJson) {
   $('.results-img').empty();
   for (let i=0; i < responseJson.message.length; i++) {
   $('.results-img').append(     
-    `<img src="${responseJson.message[i]}">`);
+    `<img src="${responseJson.message[i]}"><br>`);
     console.log(responseJson.message[i]);
   }
   $('.results').removeClass('hidden');
